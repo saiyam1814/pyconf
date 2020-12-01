@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: pyconf-demo
+  labels:
+    k8s-app: pyconf-demo
+spec:
+  selector:
+    matchLabels:
+      name: pyconf-demo
+  template:
+    metadata:
+      labels:
+        name: pyconf-demo
+    spec:
+      hostNetwork: true
+      containers:
+      - name: pyconf-demo
+        image: saiyam911/pyconf:v1
+        env:
+        - name: token
+          valueFrom:
+            secretKeyRef:
+              name: influx
+              key: token
