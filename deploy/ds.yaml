@@ -16,10 +16,15 @@ spec:
       hostNetwork: true
       containers:
       - name: pyconf-demo
-        image: saiyam911/pyconf:v1
+        image: saiyam911/pyconf:v2
         env:
         - name: token
           valueFrom:
             secretKeyRef:
               name: influx
               key: token
+        - name: host
+          valueFrom:
+            configMapKeyRef:
+              name: host
+              key: host

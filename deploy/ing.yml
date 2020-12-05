@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: influxdb
+  namespace: influxdb
+spec:
+  rules:
+  - host: influxdb.e6090fa8-196c-4138-9b2c-e9319835bccc.k8s.civo.com
+    http:
+      paths:
+      - backend:
+          serviceName: influxdb
+          servicePort: 8086
