@@ -16,7 +16,7 @@ civo k3s create --wait --save --switch
  
  # Create the secret and config map used in the deployment(Can be automated as well)
 ```
-kubectl create configmap host --from-literal=host="influxdb.{clusterID}.k8s.civo.com" -n influxdb
+kubectl create configmap host --from-literal=host="influxdb.{clusterID}.k8s.civo.com"
 kubectl create secret generic influx --from-literal=token="{token from the UI}"
 
 ```
