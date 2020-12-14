@@ -8,13 +8,13 @@ import os
 
 def influx():
     print("starting")
-    org = "test"
-    bucket = "test"
-    print("{}".format(os.environ.get('token')))
+    org = "demo"
+    bucket = "demo"
     client = InfluxDBClient(url="{}".format(os.environ.get('host')), token="{}".format(os.environ.get('token')))
-    
+    meminfo = dict((i.split()[0].rstrip(':'),int(i.split()[1])) for i in open('/proc/meminfo').readlines())
+    freemem = meminfo['MemFree'] / 1024 /1024
     write_api = client.write_api(write_options=SYNCHRONOUS)
-    point = Point("mem").tag("host", socket.gethostname()).field("used_percent", 23.43234543).time(datetime.utcnow(), WritePrecision.NS)
+    point = Point("free_mem").tag("host", socket.gethostname()).field("free_memory_Gb", freemem ).time(datetime.utcnow(), WritePrecision.NS)
     write_api.write(bucket, org, point)
 
 schedule.every(5).seconds.do(influx)   
