@@ -16,7 +16,7 @@ spec:
       hostNetwork: true
       containers:
       - name: pyconf-demo
-        image: saiyam911/pyconf:v2
+        image: saiyam911/influx:v3
         env:
         - name: token
           valueFrom:

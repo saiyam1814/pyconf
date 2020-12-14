@@ -5,7 +5,7 @@ metadata:
   namespace: influxdb
 spec:
   rules:
-  - host: influxdb.e6090fa8-196c-4138-9b2c-e9319835bccc.k8s.civo.com
+  - host: influxdb.d1cd8200-0db1-4515-8d1d-66fff66e2508.k8s.civo.com
     http:
       paths:
       - backend:
